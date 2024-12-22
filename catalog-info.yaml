@@ -1,0 +1,26 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sample-spring-boot-apps
+  title: sample-spring-boot-apps
+  annotations:
+    circleci.com/project-slug: github/axs/sample-spring-boot-apps
+    github.com/project-slug: axs/sample-spring-boot-apps
+    sonarqube.org/project-key: axs_sample-spring-boot-apps
+    backstage.io/techdocs-ref: dir:.
+    prometheus.io/rule: container_memory_usage_bytes{pod=~"sample-spring-boot-apps-.*"}|pod,rate(container_cpu_usage_seconds_total{pod=~"sample-spring-boot-apps-.*"}[5m])|pod
+    aws.amazon.com/aws-codebuild-project-arn: arn:aws:codebuild:us-west-2:971217900852:project/ecrretagged-purge
+    aws.amazon.com/aws-codepipeline-arn: arn:aws:codepipeline:us-west-2:971217900852:terraform-spinnakerlegacy-dev1
+    prometheus.io/alert: all
+    backstage.io/kubernetes-id: tools_us_dev3
+  tags:
+    - spring-boot
+    - java
+    - maven
+    - circleci
+    - renovate
+    - sonarqube
+spec:
+  type: service
+  owner: vasah@axs.com
+  lifecycle: experimental
